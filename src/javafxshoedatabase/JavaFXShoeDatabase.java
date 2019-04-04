@@ -23,7 +23,7 @@ public class JavaFXShoeDatabase extends Application {
         
         Scene scene = new Scene(root);
         
-        scene.getStylesheets().add(JavaFXShoeDatabase.class.getResource("style.css").toExternalForm());
+        scene.getStylesheets().add(JavaFXShoeDatabase.class.getResource("Style.css").toExternalForm());
         
         stage.setScene(scene);
         stage.show();
