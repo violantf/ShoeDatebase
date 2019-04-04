@@ -23,6 +23,8 @@ public class JavaFXShoeDatabase extends Application {
         
         Scene scene = new Scene(root);
         
+        scene.getStylesheets().add(JavaFXShoeDatabase.class.getResource("style.css").toExternalForm());
+        
         stage.setScene(scene);
         stage.show();
         stage.setTitle("Shoe Organizer: Visual Database");
