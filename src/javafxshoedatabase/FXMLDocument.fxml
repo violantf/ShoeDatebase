@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane id="AnchorPane" prefHeight="620" prefWidth="980" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxshoedatabase.FXMLDocumentController">
+    <children>
+        <GridPane>
+            <Label text="ID: " fx:id="lblID" minWidth="100" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtID" minWidth="150" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            
+            <Label text="Name: " fx:id="lblName" minWidth="100" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtName" minWidth="150" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            
+            <Label text="Brand: " fx:id="lblBrand" minWidth="100" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtBrand" minWidth="150" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            
+            <Label text="Style: " fx:id="lblStyle" minWidth="100" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtStyle" minWidth="150" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            
+            <Label text="Size: " fx:id="lblSize" minWidth="100" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="cmbSize" minWidth="150" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            
+            <Label text="General Stock: " fx:id="lblStock" minWidth="100" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtStock" minWidth="150" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            
+            <Button text="Add" fx:id="Add" minWidth="68" GridPane.rowIndex="6" GridPane.columnIndex="0" onAction="#onAdd"/>
+            <Button text="Update" fx:id="Update" minWidth="68" GridPane.rowIndex="6" GridPane.columnIndex="1" onAction="#onUpdate"/>
+            <Button text="Remove" fx:id="Remove" minWidth="68" GridPane.rowIndex="6" GridPane.columnIndex="2" onAction="#onDelete"/>
+        </GridPane>
+    </children>
+</BorderPane>
