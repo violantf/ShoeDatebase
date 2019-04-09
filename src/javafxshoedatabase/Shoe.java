@@ -11,6 +11,11 @@ package javafxshoedatabase;
  */
 public class Shoe {
     
+    final public static int NAME_SIZE = 30;
+    final public static int BRAND_SIZE = 30;
+    final public static int STYLE_SIZE = 30;
+    final public static int ID_SIZE = NAME_SIZE + BRAND_SIZE + STYLE_SIZE;
+    
     private String ID;
     private String name;
     private String brand;
