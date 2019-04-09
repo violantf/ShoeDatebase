@@ -39,11 +39,12 @@ public class FXML_MainController implements Initializable {
         stage.setTitle("Form");
         stage.setScene(new Scene(root1));
         stage.show();
-        
     }
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       
     }    
     
 }

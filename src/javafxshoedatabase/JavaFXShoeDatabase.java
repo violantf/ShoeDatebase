@@ -5,10 +5,13 @@
  */
 package javafxshoedatabase;
 
+import java.util.Optional;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 /**
@@ -28,6 +31,17 @@ public class JavaFXShoeDatabase extends Application {
         stage.setScene(scene);
         stage.show();
         stage.setTitle("Shoe Organizer: Visual Database");
+        
+        stage.setOnCloseRequest((WindowEvent) -> {
+            System.out.println("on Hiding Event");
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Optional<ButtonType> result = alert.showAndWait();
+            if((result.isPresent()) && (result.get() == ButtonType.OK)) {
+            } else { 
+                WindowEvent.consume();
+                System.out.println("Close Cancelled");
+            }
+        }); 
         
     }
 
