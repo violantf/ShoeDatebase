@@ -11,11 +11,10 @@
         <menus>
             <Menu text="File">
                 <items>
-                    <MenuItem text="Open" onAction="#onOpen" />
+                    <MenuItem text="Open Form" onAction="#onOpen"/>
                 </items>
             </Menu>
         </menus>
-        
     </MenuBar>
     
     <children>
