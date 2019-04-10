@@ -14,6 +14,11 @@
                     <MenuItem text="Open Form" onAction="#onOpen"/>
                 </items>
             </Menu>
+            <Menu text="Help">
+                <items>
+                    <MenuItem text="Credits" onAction="#credits"/>
+                </items>
+            </Menu>
         </menus>
     </MenuBar>
     

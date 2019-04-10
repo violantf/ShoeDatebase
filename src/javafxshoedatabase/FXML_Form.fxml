@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.collections.FXCollections?>
 
-<BorderPane id="AnchorPane" prefHeight="420" prefWidth="380" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxshoedatabase.FXML_FormController">
+<AnchorPane id="AnchorPane" prefHeight="600" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxshoedatabase.FXML_FormController">
     <children>
-        <GridPane>
-            <Label text="ID: " fx:id="lblID" minWidth="100" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <TextField fx:id="txtID" minWidth="150" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <GridPane layoutX="10" layoutY="10">
+<!--            <Label text="ID: " fx:id="lblID" minWidth="100" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtID" minWidth="150" GridPane.rowIndex="0" GridPane.columnIndex="1"/>-->
             
             <Label text="Name: " fx:id="lblName" minWidth="100" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
             <TextField fx:id="txtName" minWidth="150" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
@@ -24,23 +24,33 @@
             
             <Label text="Size: " fx:id="lblSize" minWidth="100" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
             <ComboBox fx:id="cmbSize" minWidth="150" GridPane.rowIndex="4" GridPane.columnIndex="1">
-            <items>
-            <FXCollections fx:factory="observableArrayList">
-            <String fx:value="1" />
-            <String fx:value="2" />
-            <String fx:value="3" />
-            
-            </FXCollections>
-    </items>
-    </ComboBox>
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <Double fx:value="7" />
+                        <Double fx:value="7.5" />
+                        <Double fx:value="8" />
+                        <Double fx:value="8.5" />
+                        <Double fx:value="9" />
+                        <Double fx:value="9.5" />
+                        <Double fx:value="10" />
+                        <Double fx:value="10.5" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
             
             <Label text="General Stock: " fx:id="lblStock" minWidth="100" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
             <TextField fx:id="txtStock" minWidth="150" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
             
-            <Button text="Add" fx:id="Add" minWidth="68" GridPane.rowIndex="6" GridPane.columnIndex="0" onAction="#onAdd"/>
-            <Button text="Save" fx:id="Save" minWidth="68" GridPane.rowIndex="6" GridPane.columnIndex="1" onAction="#onSave"/>
-            <Button text="Update" fx:id="Update" minWidth="68" GridPane.rowIndex="6" GridPane.columnIndex="2" onAction="#onUpdate"/>
-            <Button text="Remove" fx:id="Remove" minWidth="68" GridPane.rowIndex="6" GridPane.columnIndex="3" onAction="#onDelete"/>
+            <HBox fx:id="buttons" GridPane.rowIndex="6" GridPane.columnIndex="0" GridPane.columnSpan="4">
+                <Button text="Add" fx:id="btnAdd" minWidth="68" onAction="#onAdd"/>
+                <Button text="Save" fx:id="btnSave" minWidth="68" onAction="#onSave"/>
+                <Button text="View" fx:id="btnView" minWidth="68" onAction="#onView"/>
+                <Button text="Remove Last" fx:id="btnRemove" minWidth="68" onAction="#onDelete"/>
+            </HBox>
+            
+            
+            
         </GridPane>
+        <Label layoutX="10" layoutY="180" text="" fx:id="lblResult" minWidth="100" />
     </children>
-</BorderPane>
+</AnchorPane>

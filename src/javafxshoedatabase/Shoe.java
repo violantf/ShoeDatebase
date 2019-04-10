@@ -32,15 +32,15 @@ public class Shoe {
       this.size = size;
       this.stock = stock;
       this.style = style;
-      this.ID = brand.toUpperCase() + name.toUpperCase() + style.toUpperCase();
+      this.ID = brand.toUpperCase().trim() + name.toUpperCase().trim() + style.toUpperCase().trim();
     }
 
     public String getID() {
         return ID;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setID() {
+        this.ID = brand.toUpperCase().trim() + name.toUpperCase().trim() + style.toUpperCase().trim();
     }
 
     public String getName() {
@@ -81,5 +81,16 @@ public class Shoe {
 
     public void setStyle(String style) {
         this.style = style;
+    }
+    
+    public String toString() {
+        return  "ID:    " + this.ID.trim() + "\n" +
+                "Name:  " + this.name.trim() + "\n" +
+                "Brand: " + this.brand.trim() + "\n" + 
+                "Size:  " + this.size + "\n" +
+                "Stock: " + this.stock + "\n" +
+                "Style: " + this.style.trim() + "\n" + 
+                "\n";
+                        
     }
 }

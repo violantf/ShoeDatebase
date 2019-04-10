@@ -34,16 +34,13 @@ public class FXML_FormController implements Initializable {
     
     public void writeAddress(ArrayList<Shoe> arr) throws IOException {
         
-        //raf.setLength(0);
+        raf.setLength(0);
         
         for(Shoe s : arr) {
             try {
                 
                 raf.seek(raf.length());
                 try {
-                    FixedLengthStringIO.writeFixedLengthString(s.getID(), Shoe.ID_SIZE, raf);
-                    System.out.println(s.getID());
-                    
                     FixedLengthStringIO.writeFixedLengthString(s.getName(), Shoe.NAME_SIZE, raf);
                     System.out.println(s.getName());
                     
@@ -58,6 +55,9 @@ public class FXML_FormController implements Initializable {
                     
                     raf.writeInt(s.getStock());
                     System.out.println(s.getStock());
+                    
+                    FixedLengthStringIO.writeFixedLengthString(s.getID(), Shoe.ID_SIZE, raf);
+                    System.out.println(s.getID());
                     
                 } catch (IOException | NumberFormatException e) {
                     System.out.println("Input Invalid");
@@ -80,9 +80,6 @@ public class FXML_FormController implements Initializable {
         while(true) {
             try{
                 Shoe s = new Shoe();
-
-                String ID = FixedLengthStringIO.readFixedLengthString(Shoe.ID_SIZE, raf);
-                System.out.println(raf.getFilePointer());
                 
                 String name = FixedLengthStringIO.readFixedLengthString(Shoe.NAME_SIZE, raf);
                 System.out.println(raf.getFilePointer());
@@ -93,14 +90,22 @@ public class FXML_FormController implements Initializable {
                 String style = FixedLengthStringIO.readFixedLengthString(Shoe.STYLE_SIZE, raf);
                 System.out.println(raf.getFilePointer());
                 
-                int stock = raf.readInt();
-                System.out.println(raf.getFilePointer());
-                
                 double size = raf.readDouble();
                 System.out.println(raf.getFilePointer());
                 
-                s.setID(ID);
-
+                int stock = raf.readInt();
+                System.out.println(raf.getFilePointer());
+                
+                String ID = FixedLengthStringIO.readFixedLengthString(Shoe.ID_SIZE, raf);
+                System.out.println(raf.getFilePointer());
+                
+                s.setName(name);
+                s.setBrand(brand);
+                s.setStyle(style);
+                s.setSize(size);
+                s.setStock(stock);
+                s.setID();
+                
                 tempNew.add(tempNew.size(), s);
                 
 
@@ -111,13 +116,13 @@ public class FXML_FormController implements Initializable {
         return tempNew;
     }
     
-    @FXML private Label lblID, lblName, lblBrand, lblStyle, lblSize, lblStock;
+    @FXML private Label lblID, lblName, lblBrand, lblStyle, lblSize, lblStock, lblResult;
     
     @FXML private TextField txtID, txtName, txtBrand, txtStyle, txtStock;
     
     @FXML private ComboBox cmbSize;  
     
-    @FXML private Button Add, Update, Remove;
+    @FXML private Button btnAdd, btnView, btnRemove, btnSave;
     
     @FXML 
     private void onSave(ActionEvent event) throws IOException {
@@ -130,26 +135,43 @@ public class FXML_FormController implements Initializable {
         
          try {
             Shoe s = new Shoe();
-            s.setID(txtID.getText().trim());
             s.setName(txtName.getText());
             s.setBrand(txtBrand.getText().trim());
             s.setStyle(txtStyle.getText().trim());
             s.setSize(Double.parseDouble(cmbSize.getValue().toString()));
             s.setStock(Integer.parseInt(txtStock.getText()));
-            //System.out.println((cmbSize.getValue().toString()));
+            s.setID();
             shoeNew.add(shoeNew.size(), s);
+             System.out.println("Object[" + s.getID() + "] added");
         } catch (NumberFormatException ex) {
-            System.out.println("Invalid Input");
+            System.out.println("Stock should be a Number");
+        } catch (RuntimeException ex) {
+             System.out.println("Fields should not be empty");
         }
     }
     
     @FXML 
-    private void onUpdate(ActionEvent event) {
+    private void onView(ActionEvent event) throws IOException {
+        String nS = "";
         
+        shoeNew = readAddress();
+        
+        for(Shoe s : shoeNew) {
+            nS += s.toString();
+            System.out.println(nS);
+        }
+        lblResult.setText(nS);
     }
         
     @FXML 
     private void onDelete(ActionEvent event) {
+        System.out.println("arrSize: " + shoeNew.size());
+        
+        if(!shoeNew.isEmpty()) {
+            shoeNew.remove(shoeNew.size() - 1 );
+        } else {
+            System.out.println("File is Empty");
+        }
         
     }
     

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox id="AnchorPane" prefHeight="120.0" prefWidth="160" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxshoedatabase.FXML_CreditsController">
+    <Label text="Credits: "/>
+    <Label text="Timothy Marasigan," />
+    <Label text="Kolade Siyanbola,"/>
+    <Label text="Fabrizio Violante,"/>
+    <Label text="Guoxing Zheng"/>
+</VBox>
