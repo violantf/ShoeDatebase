@@ -5,6 +5,7 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
 
 <BorderPane id="AnchorPane" prefHeight="420" prefWidth="380" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxshoedatabase.FXML_FormController">
     <children>
@@ -22,14 +23,24 @@
             <TextField fx:id="txtStyle" minWidth="150" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
             
             <Label text="Size: " fx:id="lblSize" minWidth="100" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
-            <ComboBox fx:id="cmbSize" minWidth="150" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+            <ComboBox fx:id="cmbSize" minWidth="150" GridPane.rowIndex="4" GridPane.columnIndex="1">
+            <items>
+            <FXCollections fx:factory="observableArrayList">
+            <String fx:value="1" />
+            <String fx:value="2" />
+            <String fx:value="3" />
+            
+            </FXCollections>
+    </items>
+    </ComboBox>
             
             <Label text="General Stock: " fx:id="lblStock" minWidth="100" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
             <TextField fx:id="txtStock" minWidth="150" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
             
             <Button text="Add" fx:id="Add" minWidth="68" GridPane.rowIndex="6" GridPane.columnIndex="0" onAction="#onAdd"/>
-            <Button text="Update" fx:id="Update" minWidth="68" GridPane.rowIndex="6" GridPane.columnIndex="1" onAction="#onUpdate"/>
-            <Button text="Remove" fx:id="Remove" minWidth="68" GridPane.rowIndex="6" GridPane.columnIndex="2" onAction="#onDelete"/>
+            <Button text="Save" fx:id="Save" minWidth="68" GridPane.rowIndex="6" GridPane.columnIndex="1" onAction="#onSave"/>
+            <Button text="Update" fx:id="Update" minWidth="68" GridPane.rowIndex="6" GridPane.columnIndex="2" onAction="#onUpdate"/>
+            <Button text="Remove" fx:id="Remove" minWidth="68" GridPane.rowIndex="6" GridPane.columnIndex="3" onAction="#onDelete"/>
         </GridPane>
     </children>
 </BorderPane>
