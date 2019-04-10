@@ -30,9 +30,11 @@ public class FXML_FormController implements Initializable {
     private int count = 0;
     private ArrayList<Shoe> shoeNew;
     
+    
+    
     public void writeAddress(ArrayList<Shoe> arr) throws IOException {
         
-        raf.setLength(0);
+        //raf.setLength(0);
         
         for(Shoe s : arr) {
             try {
@@ -51,11 +53,11 @@ public class FXML_FormController implements Initializable {
                     FixedLengthStringIO.writeFixedLengthString(s.getStyle(), Shoe.STYLE_SIZE, raf);
                     System.out.println(s.getStyle());
                     
-                    raf.writeInt(s.getStock());
-                    System.out.println(s.getStock());
-                    
                     raf.writeDouble(s.getSize());
                     System.out.println(s.getSize());
+                    
+                    raf.writeInt(s.getStock());
+                    System.out.println(s.getStock());
                     
                 } catch (IOException | NumberFormatException e) {
                     System.out.println("Input Invalid");
@@ -118,8 +120,27 @@ public class FXML_FormController implements Initializable {
     @FXML private Button Add, Update, Remove;
     
     @FXML 
-    private void onAdd(ActionEvent event) {
+    private void onSave(ActionEvent event) throws IOException {
+        writeAddress(shoeNew);
+        //System.out.println(shoeNew);
+    }
+    
+    @FXML 
+    private void onAdd(ActionEvent event) throws IOException {
         
+         try {
+            Shoe s = new Shoe();
+            s.setID(txtID.getText().trim());
+            s.setName(txtName.getText());
+            s.setBrand(txtBrand.getText().trim());
+            s.setStyle(txtStyle.getText().trim());
+            s.setSize(Double.parseDouble(cmbSize.getValue().toString()));
+            s.setStock(Integer.parseInt(txtStock.getText()));
+            //System.out.println((cmbSize.getValue().toString()));
+            shoeNew.add(shoeNew.size(), s);
+        } catch (NumberFormatException ex) {
+            System.out.println("Invalid Input");
+        }
     }
     
     @FXML 
