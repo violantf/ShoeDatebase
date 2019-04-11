@@ -10,3 +10,35 @@ and open the template in the editor.
 .root {
     -fx-background-color: #5b77a3;
 }
+
+.label {
+    -fx-text-fill: white;
+}
+
+.MenuBar {
+    -fx-text-fill: black;
+}
+
+.AnchorPane {
+    -fx-background-color: #5b77a3;
+}
+
+.GridPane {
+    -fx-background-color: #5b77a3;
+}
+
+.BorderPane {
+    -fx-background-color: #5b77a3;
+}
+
+.first {
+    -fx-font-size: 26px;
+}
+
+.second {
+    -fx-font-size: 20px;
+}
+
+.third {
+    -fx-font-size: 11px;
+}
