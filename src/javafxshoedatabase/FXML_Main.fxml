@@ -9,7 +9,7 @@
 <VBox id="VBoxPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxshoedatabase.FXML_MainController">
     <MenuBar>
         <menus>
-            <Menu text="File">
+            <Menu fx:id="MenuBar" text="File">
                 <items>
                     <MenuItem text="Open Form" onAction="#onOpen"/>
                 </items>
@@ -21,6 +21,21 @@
             </Menu>
         </menus>
     </MenuBar>
+    <BorderPane styleClass="first">
+        <center>
+            <Label fx:id="txt1" text="PROG 24178 Object Oriented Programming 2"/>
+        </center>
+    </BorderPane>
+    <BorderPane styleClass="second">
+        <center>
+            <Label fx:id="txt2" text="Welcome to the Shoe Database!"/>
+        </center>
+    </BorderPane>
+    <BorderPane styleClass="third">
+        <center>
+            <Label fx:id="txt3" text="This program was designed to allows its users to record information on their shoe collection to a database."/>
+        </center>
+    </BorderPane>
     
     <children>
         
