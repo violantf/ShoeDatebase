@@ -11,6 +11,8 @@ import java.io.RandomAccessFile;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,7 +29,6 @@ public class FXML_FormController implements Initializable {
     
     final static int RECORD_SIZE = (Shoe.ID_SIZE * 2) + 4 + 8;
     private RandomAccessFile raf;
-    private int count = 0;
     private ArrayList<Shoe> shoeNew;
     
     
@@ -187,5 +188,10 @@ public class FXML_FormController implements Initializable {
         }
         
         shoeNew = new ArrayList();
+//        try {
+//            shoeNew = readAddress();
+//        } catch (IOException ex) {
+//            System.out.println("no address to read from");
+//        }
     }
 }
