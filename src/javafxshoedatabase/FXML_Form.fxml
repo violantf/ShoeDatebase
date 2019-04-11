@@ -45,6 +45,7 @@
                 <Button text="Add" fx:id="btnAdd" minWidth="68" onAction="#onAdd"/>
                 <Button text="Save" fx:id="btnSave" minWidth="68" onAction="#onSave"/>
                 <Button text="View" fx:id="btnView" minWidth="68" onAction="#onView"/>
+                <Button text="Edit Last" fx:id="btnEdit" minWidth="68" onAction="#onUpdate"/>
                 <Button text="Remove Last" fx:id="btnRemove" minWidth="68" onAction="#onDelete"/>
             </HBox>
             

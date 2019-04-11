@@ -11,8 +11,6 @@ import java.io.RandomAccessFile;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -117,7 +115,7 @@ public class FXML_FormController implements Initializable {
         return tempNew;
     }
     
-    @FXML private Label lblID, lblName, lblBrand, lblStyle, lblSize, lblStock, lblResult;
+    @FXML private Label lblID, lblName, lblBrand, lblStyle, lblSize, lblStock, lblError, lblResult;
     
     @FXML private TextField txtID, txtName, txtBrand, txtStyle, txtStock;
     
@@ -127,7 +125,14 @@ public class FXML_FormController implements Initializable {
     
     @FXML 
     private void onSave(ActionEvent event) throws IOException {
-        writeAddress(shoeNew);
+        if(!shoeNew.isEmpty()) {
+            writeAddress(shoeNew);
+            lblResult.setText("File Saved!");
+        } else {
+            writeAddress(shoeNew);
+            lblResult.setText("File saved as empty");
+        }
+        
         //System.out.println(shoeNew);
     }
     
@@ -143,10 +148,14 @@ public class FXML_FormController implements Initializable {
             s.setStock(Integer.parseInt(txtStock.getText()));
             s.setID();
             shoeNew.add(shoeNew.size(), s);
-             System.out.println("Object[" + s.getID() + "] added");
+            System.out.println("Object[" + s.getID() + "] added");
+            lblResult.setText("Object[" + s.getID() + "] added");
+            
         } catch (NumberFormatException ex) {
+            lblResult.setText("Error: Stock should be a Number");
             System.out.println("Stock should be a Number");
         } catch (RuntimeException ex) {
+            lblResult.setText("Error: Input Error");
              System.out.println("Fields should not be empty");
         }
     }
@@ -157,6 +166,11 @@ public class FXML_FormController implements Initializable {
         
         shoeNew = readAddress();
         
+        if(shoeNew.isEmpty()) {
+            lblResult.setText("Error: File is empty");
+            return;
+        }
+        
         for(Shoe s : shoeNew) {
             nS += s.toString();
             System.out.println(nS);
@@ -166,14 +180,44 @@ public class FXML_FormController implements Initializable {
         
     @FXML 
     private void onDelete(ActionEvent event) {
-        System.out.println("arrSize: " + shoeNew.size());
+        System.out.println("arrSize: " + shoeNew.size() + " -1");
         
         if(!shoeNew.isEmpty()) {
             shoeNew.remove(shoeNew.size() - 1 );
         } else {
+            lblResult.setText("Error: File is Empty");
             System.out.println("File is Empty");
         }
         
+    }
+    
+    @FXML 
+    private void onUpdate(ActionEvent e) {
+        if(!shoeNew.isEmpty()) {
+            shoeNew.remove(shoeNew.size() - 1 );
+            
+            try {
+                Shoe s = new Shoe();
+                s.setName(txtName.getText());
+                s.setBrand(txtBrand.getText().trim());
+                s.setStyle(txtStyle.getText().trim());
+                s.setSize(Double.parseDouble(cmbSize.getValue().toString()));
+                s.setStock(Integer.parseInt(txtStock.getText()));
+                s.setID();
+                shoeNew.add(shoeNew.size(), s);
+                 System.out.println("Object[" + s.getID() + "] added");
+            } catch (NumberFormatException ex) {
+                lblResult.setText("Error: Stock should be a Number");
+                System.out.println("Stock should be a Number");
+            } catch (RuntimeException ex) {
+                lblResult.setText("Error: Input Error");
+                 System.out.println("Fields should not be empty");
+            }
+            
+        } else {
+            lblResult.setText("Error: File is Empty");
+            System.out.println("File is Empty");
+        }
     }
     
     @Override
