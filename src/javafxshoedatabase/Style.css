@@ -11,24 +11,8 @@ and open the template in the editor.
     -fx-background-color: #5b77a3;
 }
 
-.label {
-    -fx-text-fill: white;
-}
-
 .MenuBar {
     -fx-text-fill: black;
-}
-
-.AnchorPane {
-    -fx-background-color: #5b77a3;
-}
-
-.GridPane {
-    -fx-background-color: #5b77a3;
-}
-
-.BorderPane {
-    -fx-background-color: #5b77a3;
 }
 
 .first {
@@ -41,4 +25,8 @@ and open the template in the editor.
 
 .third {
     -fx-font-size: 11px;
+}
+
+.first .label, .second .label, .third .label {
+    -fx-text-fill: white;
 }
